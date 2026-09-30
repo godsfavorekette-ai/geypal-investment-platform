@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# misc
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# dist
+dist/
+build/
