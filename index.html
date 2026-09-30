@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geypal | Smart Wealth Growth</title>
+    <meta
+      name="description"
+      content="Geypal investment platform dashboard with deposits, withdrawals, plans, and profile management."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar hidden" id="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">G</div>
+          <span>Geypal</span>
+        </div>
+        <button class="ghost-btn" id="logoutBtn">Logout</button>
+      </header>
+
+      <main class="screen-container">
+        <section id="authScreen" class="screen active">
+          <div class="auth-card">
+            <div class="logo-badge">G</div>
+            <h1>Welcome to Geypal</h1>
+            <p>Build smarter wealth with secure plans and real-time portfolio growth.</p>
+
+            <div class="auth-toggle">
+              <button class="toggle-btn active" data-auth-tab="signup">Sign Up</button>
+              <button class="toggle-btn" data-auth-tab="signin">Sign In</button>
+            </div>
+
+            <div id="signupPanel" class="auth-panel active">
+              <div class="social-row">
+                <button class="social-btn"><span>G</span> Google</button>
+                <button class="social-btn"><span></span> Apple</button>
+              </div>
+
+              <div class="divider"><span>or continue with email</span></div>
+
+              <form id="signupForm" class="auth-form">
+                <label>
+                  <span>Full name</span>
+                  <input type="text" id="signupName" placeholder="Enter your full name" required />
+                </label>
+                <label>
+                  <span>Email address</span>
+                  <input type="email" id="signupEmail" placeholder="name@example.com" required />
+                </label>
+                <label>
+                  <span>Password</span>
+                  <input type="password" id="signupPassword" placeholder="Create a password" required />
+                </label>
+                <button class="primary-btn" type="submit">Create Account</button>
+              </form>
+            </div>
+
+            <div id="signinPanel" class="auth-panel">
+              <div class="social-row">
+                <button class="social-btn"><span>G</span> Google</button>
+                <button class="social-btn"><span></span> Apple</button>
+              </div>
+
+              <div class="divider"><span>or sign in with email</span></div>
+
+              <form id="signinForm" class="auth-form">
+                <label>
+                  <span>Email address</span>
+                  <input type="email" id="signinEmail" placeholder="name@example.com" required />
+                </label>
+                <label>
+                  <span>Password</span>
+                  <input type="password" id="signinPassword" placeholder="Enter your password" required />
+                </label>
+                <button class="primary-btn" type="submit">Sign In</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="dashboardScreen" class="screen">
+          <div class="home-header">
+            <div>
+              <p class="eyebrow">Portfolio</p>
+              <h2>Dashboard</h2>
+            </div>
+            <button class="chip-btn" id="refreshBalanceBtn">Live</button>
+          </div>
+
+          <div class="balance-card">
+            <div class="balance-header">
+              <span>Current Balance</span>
+              <span class="balance-tag">NGN</span>
+            </div>
+            <h3 id="balanceDisplay">₦0.00</h3>
+            <div class="balance-row">
+              <div>
+                <small>Invested</small>
+                <strong id="investedDisplay">₦0.00</strong>
+              </div>
+              <div>
+                <small>Profit</small>
+                <strong id="profitDisplay">₦0.00</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-stats">
+            <div class="stat-card">
+              <span>Pending</span>
+              <strong>₦18,750</strong>
+            </div>
+            <div class="stat-card">
+              <span>Today</span>
+              <strong>+₦5,500</strong>
+            </div>
+            <div class="stat-card">
+              <span>Plans</span>
+              <strong>12 active</strong>
+            </div>
+          </div>
+
+          <div class="widget-card">
+            <div class="section-title">
+              <h4>Recent Activity</h4>
+              <a href="#">View all</a>
+            </div>
+            <ul class="activity-list">
+              <li>
+                <div>
+                  <strong>VIP 4 lease</strong>
+                  <small>Today, 09:40 AM</small>
+                </div>
+                <span class="up">+₦65,000</span>
+              </li>
+              <li>
+                <div>
+                  <strong>Withdrawal</strong>
+                  <small>Yesterday, 03:25 PM</small>
+                </div>
+                <span class="down">-₦40,000</span>
+              </li>
+              <li>
+                <div>
+                  <strong>Deposit</strong>
+                  <small>Mon, 12:15 PM</small>
+                </div>
+                <span class="up">+₦15,000</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="depositScreen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn" data-back="dashboard">←</button>
+            <h3>Deposit</h3>
+          </div>
+
+          <div class="amount-grid" id="depositAmountGrid"></div>
+
+          <button class="primary-btn full-width" id="proceedToPayBtn">Proceed to Pay</button>
+        </section>
+
+        <section id="paymentScreen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn" data-back="deposit">←</button>
+            <h3>Transfer Details</h3>
+          </div>
+
+          <div class="info-card payment-card">
+            <p class="eyebrow">Make your payment to</p>
+            <div class="detail-row">
+              <span>Account Name</span>
+              <strong>Godsfavour Ekette</strong>
+            </div>
+            <div class="detail-row">
+              <span>Account Number</span>
+              <strong>3237527067</strong>
+            </div>
+            <div class="detail-row">
+              <span>Bank Name</span>
+              <strong>First Bank of Nigeria</strong>
+            </div>
+            <div class="detail-row highlight">
+              <span>Amount</span>
+              <strong id="paymentAmountDisplay">₦0.00</strong>
+            </div>
+            <button class="primary-btn full-width" id="confirmDepositBtn">I have paid</button>
+          </div>
+        </section>
+
+        <section id="withdrawScreen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn" data-back="dashboard">←</button>
+            <h3>Withdraw</h3>
+          </div>
+
+          <div class="amount-grid amount-grid-compact" id="withdrawAmountGrid"></div>
+
+          <div class="info-card">
+            <h4>Withdrawal Account</h4>
+            <form id="withdrawForm" class="auth-form">
+              <label>
+                <span>Account name</span>
+                <input type="text" id="withdrawName" placeholder="Enter account name" required />
+              </label>
+              <label>
+                <span>Account number</span>
+                <input type="text" id="withdrawNumber" placeholder="Enter account number" required />
+              </label>
+              <label>
+                <span>Bank name</span>
+                <input type="text" id="withdrawBank" placeholder="Enter bank name" required />
+              </label>
+              <button class="primary-btn full-width" type="submit">Withdraw</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="plansScreen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn" data-back="dashboard">←</button>
+            <h3>Plans</h3>
+          </div>
+
+          <div class="plan-list" id="plansList"></div>
+        </section>
+
+        <section id="profileScreen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn" data-back="dashboard">←</button>
+            <h3>Profile</h3>
+          </div>
+
+          <div class="profile-card">
+            <div class="profile-header">
+              <div class="avatar" id="profileAvatar">GE</div>
+              <div>
+                <h4 id="profileName">Godsfavour Ekette</h4>
+                <p id="profileId">User ID: GYP-10486</p>
+              </div>
+            </div>
+
+            <div class="profile-info">
+              <div class="detail-row">
+                <span>Plan invested</span>
+                <strong id="profilePlan">VIP 4 Lease</strong>
+              </div>
+              <div class="detail-row">
+                <span>Date joined</span>
+                <strong id="profileDate">12 Sep 2026</strong>
+              </div>
+              <div class="detail-row">
+                <span>Email</span>
+                <strong id="profileEmail">geypaluser@gmail.com</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-screen="dashboardScreen">
+          <span class="nav-icon">⌂</span>
+          <small>Home</small>
+        </button>
+        <button class="nav-item" data-screen="depositScreen">
+          <span class="nav-icon">⇪</span>
+          <small>Deposit</small>
+        </button>
+        <button class="nav-item" data-screen="withdrawScreen">
+          <span class="nav-icon">⇩</span>
+          <small>Withdraw</small>
+        </button>
+        <button class="nav-item" data-screen="plansScreen">
+          <span class="nav-icon">▣</span>
+          <small>Plans</small>
+        </button>
+        <button class="nav-item" data-screen="profileScreen">
+          <span class="nav-icon">◉</span>
+          <small>Profile</small>
+        </button>
+      </nav>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
